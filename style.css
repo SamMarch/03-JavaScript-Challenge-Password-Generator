@@ -37,9 +37,9 @@ header {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
-  margin: 0 auto;
+  margin: 20px auto; /* Added margin */
   max-width: 800px;
-  padding: 30px 40px;
+  padding: 40px 60px; /* Increased padding */
 }
 
 .card-header::after {
@@ -52,10 +52,12 @@ header {
 
 .card-body {
   min-height: 100px;
+  padding: 20px 0; /* Added padding */
 }
 
 .card-footer {
   text-align: center;
+  padding: 20px 0; /* Added padding */
 }
 
 .card-footer::before {
@@ -86,6 +88,15 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Added transition */
+}
+
+.btn:hover {
+  background-color: hsl(360, 91%, 26%); /* Darker on hover */
+}
+
+.btn:active {
+  background-color: hsl(360, 91%, 16%); /* Even darker on active */
 }
 
 button[disabled] {
@@ -116,6 +127,8 @@ button[disabled] {
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  background-color: #e9ecef; /* Lighter background */
+  color: #495057; /* Darker text */
 }
 
 @media (max-width: 690px) {
