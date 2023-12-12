@@ -1,78 +1,48 @@
 // Assignment Code
-// Query selectors
-var generateBtn = document.querySelector("#generate");
-var password = document.querySelector("#password");
+const generateBtn = document.querySelector("#generate");
+const password = document.querySelector("#password");
 
-// variables for all upper and lowercase letters, numbers, characters and final option
-var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "0123456789";
-var optionsVariable = "";
+// Variables for all upper and lowercase letters, numbers, characters and final option
+const specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbers = "0123456789";
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//function added to clear taxt after prompts
-function clearText() {
-    password.value = ""
+// Function to generate a random password
+function generatePassword(length, characters) {
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return password;
 }
 
-// Write a function that generates a random password in the "text area" box
+// Function to write password
 function writePassword() {
+    password.value = "";
 
-    var randomString = "";
+    let passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
 
-    // Choose password criteria
-    var passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
-
-        // Write another function that checks if it's between 8 and 128 characters
-        if (passwordLength < 8 || passwordLength > 128) {
-            alert("Your password is not between 8 characters and 128 characters. Please try again.");
-            clearText();
-            return;
-        }
-
-    var lowercaseLett = confirm("Do you want your password to contain lowercase letters?");
-    var uppercaseLett = confirm("Do you want your password to contain uppercase letters?");
-    var num = confirm("Do you want your password to contain numbers?");
-    var specialChar = confirm("Do you want your password to contain special characters?");
-
-    // Ensure that if someone clicks cancel for all password criteria that it asks them to choose at least one
-    if (lowercaseLett === false && uppercaseLett === false && num === false && specialChar === false) {
-        alert("You must chose at least one password criteria.");
-        clearText();
+    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+        alert("Your password is not between 8 characters and 128 characters. Please try again.");
         return;
     }
 
-    // Use the criteria that are selected and store them in a variable
-    if (lowercaseLett) {
-        optionsVariable += lowercaseAlphabet;
+    let optionsVariable = "";
+    if (confirm("Do you want your password to contain lowercase letters?")) optionsVariable += lowercaseAlphabet;
+    if (confirm("Do you want your password to contain uppercase letters?")) optionsVariable += uppercaseAlphabet;
+    if (confirm("Do you want your password to contain numbers?")) optionsVariable += numbers;
+    if (confirm("Do you want your password to contain special characters?")) optionsVariable += specialCharacters;
+
+    if (optionsVariable === "") {
+        alert("You must chose at least one password criteria.");
+        return;
     }
 
-    if (uppercaseLett) {
-        optionsVariable += uppercaseAlphabet;
-    }
-
-    if (num) {
-        optionsVariable += numbers;
-    }
-
-    if (specialChar) {
-        optionsVariable += specialCharacters;
-    }
-
-    // Generates a random password based on the criteria that have been selected
-
-    // Basic 'for' loop
-    for (var i = 0; i < passwordLength; i++) {
-        // Selects a random character value from the string until it is the desired length
-        var index = Math.floor(Math.random() * optionsVariable.length);
-        //adds each selected random character value and adds it to the string
-        randomString += optionsVariable[index];
-    }
-    password.value = randomString;
-
+    password.value = generatePassword(passwordLength, optionsVariable);
 }
 
 writePassword();
