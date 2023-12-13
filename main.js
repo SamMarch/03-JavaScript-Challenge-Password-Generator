@@ -15,10 +15,7 @@ copyBtn.addEventListener("click", function() {
     alert("Copied the text: " + passwordText.value);
 });
 
-generateBtn.addEventListener("click", writePassword);
-
-// Function to write password
-function writePassword() {
+generateBtn.addEventListener("click", function() {
     password.value = "";
 
     let passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
@@ -47,6 +44,4 @@ function writePassword() {
 
     // Calculate and set the strength of the password
     strengthMeter.value = calculateStrength(generatedPassword);
-}
-
-writePassword();
+});
