@@ -4,16 +4,8 @@ import { generatePassword } from './generatePassword.js';
 import { calculateStrength } from './calculateStrength.js';
 
 const password = document.querySelector("#password");
-const copyBtn = document.querySelector("#copy");
 const strengthMeter = document.querySelector("#strength");
 const passwordOptions = document.querySelector("#passwordOptions");
-
-copyBtn.addEventListener("click", function() {
-    const passwordText = document.querySelector("#password");
-    passwordText.select();
-    document.execCommand("copy");
-    alert("Copied the text: " + passwordText.value);
-});
 
 passwordOptions.addEventListener("submit", function(event) {
     event.preventDefault();
