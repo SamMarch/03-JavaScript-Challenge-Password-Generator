@@ -3,11 +3,14 @@ import { specialCharacters, lowercaseAlphabet, uppercaseAlphabet, numbers } from
 import { generatePassword } from './generatePassword.js';
 import { calculateStrength } from './calculateStrength.js';
 
-const password = document.querySelector("#password");
-const strengthMeter = document.querySelector("#strength");
-const passwordOptions = document.querySelector("#passwordOptions");
+// State object
+let state = {
+    password: '',
+    strength: 0
+};
 
-passwordOptions.addEventListener("submit", function(event) {
+// Function to handle form submission
+function handleFormSubmit(event) {
     event.preventDefault();
 
     let passwordLength = document.querySelector("#length").value;
@@ -24,14 +27,23 @@ passwordOptions.addEventListener("submit", function(event) {
     }
 
     // Generate the password
-    let generatedPassword = generatePassword(passwordLength, optionsVariable);
-
-    // Set the password value
-    password.value = generatedPassword;
+    state.password = generatePassword(passwordLength, optionsVariable);
 
     // Calculate and set the strength of the password
-    let strength = calculateStrength(generatedPassword);
+    state.strength = calculateStrength(state.password);
+
+    // Update the DOM
+    updateDOM();
+}
+
+// Function to update the DOM based on the current state
+function updateDOM() {
+    document.querySelector("#password").value = state.password;
+
     let progressBarValue = document.querySelector("#progress-bar-value");
-    progressBarValue.style.width = strength + '%';
-    progressBarValue.setAttribute('data-value', strength);
-});
+    progressBarValue.style.width = state.strength + '%';
+    progressBarValue.setAttribute('data-value', state.strength);
+}
+
+// Event listener for the form submission
+document.querySelector("#passwordOptions").addEventListener("submit", handleFormSubmit);
