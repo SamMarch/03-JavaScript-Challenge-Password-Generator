@@ -1,24 +1,21 @@
-// Assignment Code
+// main.js
+import { specialCharacters, lowercaseAlphabet, uppercaseAlphabet, numbers } from './constants.js';
+import { generatePassword } from './generatePassword.js';
+import { calculateStrength } from './calculateStrength.js';
+
 const generateBtn = document.querySelector("#generate");
 const password = document.querySelector("#password");
+const copyBtn = document.querySelector("#copy");
+const strengthMeter = document.querySelector("#strength");
 
-// Variables for all upper and lowercase letters, numbers, characters and final option
-const specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
-const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const numbers = "0123456789";
+copyBtn.addEventListener("click", function() {
+    const passwordText = document.querySelector("#password");
+    passwordText.select();
+    document.execCommand("copy");
+    alert("Copied the text: " + passwordText.value);
+});
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// Function to generate a random password
-function generatePassword(length, characters) {
-    let password = "";
-    for (let i = 0; i < length; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return password;
-}
 
 // Function to write password
 function writePassword() {
@@ -42,7 +39,14 @@ function writePassword() {
         return;
     }
 
-    password.value = generatePassword(passwordLength, optionsVariable);
+    // Generate the password
+    let generatedPassword = generatePassword(passwordLength, optionsVariable);
+
+    // Set the password value
+    password.value = generatedPassword;
+
+    // Calculate and set the strength of the password
+    strengthMeter.value = calculateStrength(generatedPassword);
 }
 
 writePassword();
