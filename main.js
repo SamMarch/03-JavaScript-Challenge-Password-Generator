@@ -3,10 +3,10 @@ import { specialCharacters, lowercaseAlphabet, uppercaseAlphabet, numbers } from
 import { generatePassword } from './generatePassword.js';
 import { calculateStrength } from './calculateStrength.js';
 
-const generateBtn = document.querySelector("#generate");
 const password = document.querySelector("#password");
 const copyBtn = document.querySelector("#copy");
 const strengthMeter = document.querySelector("#strength");
+const passwordOptions = document.querySelector("#passwordOptions");
 
 copyBtn.addEventListener("click", function() {
     const passwordText = document.querySelector("#password");
@@ -15,21 +15,16 @@ copyBtn.addEventListener("click", function() {
     alert("Copied the text: " + passwordText.value);
 });
 
-generateBtn.addEventListener("click", function() {
-    password.value = "";
+passwordOptions.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-    let passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
-
-    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-        alert("Your password is not between 8 characters and 128 characters. Please try again.");
-        return;
-    }
-
+    let passwordLength = document.querySelector("#length").value;
     let optionsVariable = "";
-    if (confirm("Do you want your password to contain lowercase letters?")) optionsVariable += lowercaseAlphabet;
-    if (confirm("Do you want your password to contain uppercase letters?")) optionsVariable += uppercaseAlphabet;
-    if (confirm("Do you want your password to contain numbers?")) optionsVariable += numbers;
-    if (confirm("Do you want your password to contain special characters?")) optionsVariable += specialCharacters;
+
+    if (document.querySelector("#lowercase").checked) optionsVariable += lowercaseAlphabet;
+    if (document.querySelector("#uppercase").checked) optionsVariable += uppercaseAlphabet;
+    if (document.querySelector("#numbers").checked) optionsVariable += numbers;
+    if (document.querySelector("#special").checked) optionsVariable += specialCharacters;
 
     if (optionsVariable === "") {
         alert("You must chose at least one password criteria.");
