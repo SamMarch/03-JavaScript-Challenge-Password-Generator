@@ -30,5 +30,8 @@ passwordOptions.addEventListener("submit", function(event) {
     password.value = generatedPassword;
 
     // Calculate and set the strength of the password
-    strengthMeter.value = calculateStrength(generatedPassword);
+    let strength = calculateStrength(generatedPassword);
+    let progressBarValue = document.querySelector("#progress-bar-value");
+    progressBarValue.style.width = strength + '%';
+    progressBarValue.setAttribute('data-value', strength);
 });
