@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="wrapper">
@@ -27,20 +28,34 @@
         </div>
         <div class="card-footer">
           <form id="passwordOptions">
-            <label for="length">Password length:</label>
-            <input type="number" id="length" min="8" max="128" value="8">
+            <fieldset>
+              <legend>Password Options:</legend>
+              
+              <div class="option">
+                <label for="length">Password length:</label>
+                <input type="number" id="length" min="8" max="128" value="8">
+              </div>
 
-            <label for="lowercase">Include lowercase letters:</label>
-            <input type="checkbox" id="lowercase">
+              <div class="option">
+                <label for="lowercase">Include lowercase letters:</label>
+                <input type="checkbox" id="lowercase">
+              </div>
 
-            <label for="uppercase">Include uppercase letters:</label>
-            <input type="checkbox" id="uppercase">
+              <div class="option">
+                <label for="uppercase">Include uppercase letters:</label>
+                <input type="checkbox" id="uppercase">
+              </div>
 
-            <label for="numbers">Include numbers:</label>
-            <input type="checkbox" id="numbers">
+              <div class="option">
+                <label for="numbers">Include numbers:</label>
+                <input type="checkbox" id="numbers">
+              </div>
 
-            <label for="special">Include special characters:</label>
-            <input type="checkbox" id="special">
+              <div class="option">
+                <label for="special">Include special characters:</label>
+                <input type="checkbox" id="special">
+              </div>
+            </fieldset>
 
             <button type="submit" class="btn">Generate Password</button>
           </form>
