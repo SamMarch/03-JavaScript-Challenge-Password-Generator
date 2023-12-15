@@ -18,15 +18,12 @@ body {
 }
 
 .wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 30px 20px;
 }
 
 header {
   text-align: center;
-  padding: 20px;
-  padding-top: 0px;
+  padding: 20px 0;
   color: hsl(206, 17%, 28%);
 }
 
@@ -37,25 +34,19 @@ header {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
-  margin: 20px auto; /* Added margin */
+  margin: 20px auto;
+  padding: 40px 60px;
   max-width: 800px;
-  padding: 40px 60px; /* Increased padding */
 }
 
 .card-body {
   min-height: 100px;
-  padding: 20px 0; /* Added padding */
+  padding: 20px 0;
 }
 
 .card-footer {
   text-align: center;
-  padding: 20px 0; /* Added padding */
-}
-
-.card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
+  padding: 20px 0;
 }
 
 .btn {
@@ -71,25 +62,20 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Added transition */
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: hsl(360, 91%, 26%); /* Darker on hover */
-  color: hsl(0, 0%, 100%); /* Change the text color on hover */
+  background-color: hsl(360, 91%, 26%);
 }
 
 .btn:active {
-  background-color: hsl(360, 91%, 16%); /* Even darker on active */
+  background-color: hsl(360, 91%, 16%);
 }
 
 button[disabled] {
   cursor: default;
   background: #c0c7cf;
-}
-
-.float-right {
-  float: right;
 }
 
 #password {
@@ -99,20 +85,16 @@ button[disabled] {
   border: none;
   display: block;
   width: 100%;
-  padding-top: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 30px;
+  padding: 30px 15px;
   font-size: 1.2rem;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   border: 2px dashed #c0c7cf;
   border-radius: 6px;
   resize: none;
   overflow: hidden;
-  background-color: #e9ecef; /* Lighter background */
-  color: #495057; /* Darker text */
+  background-color: #e9ecef;
+  color: #495057;
 }
 
 #progress-bar {
@@ -132,27 +114,26 @@ button[disabled] {
 }
 
 #progress-bar-value[data-value="25"] {
-  background-color: rgb(255, 68, 68); /* Weak */
+  background-color: rgb(255, 68, 68);
 }
 
 #progress-bar-value[data-value="50"] {
-  background-color: rgb(255, 136, 0); /* Medium */
+  background-color: rgb(255, 136, 0);
 }
 
 #progress-bar-value[data-value="75"] {
-  background-color: rgb(255, 251, 0); /* Strong */
+  background-color: rgb(255, 251, 0);
 }
 
 #progress-bar-value[data-value="100"] {
-  background-color: rgb(0, 204, 10); /* Optimal */
+  background-color: rgb(0, 204, 10);
 }
 
 fieldset {
   border: none;
   margin-bottom: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 legend {
@@ -161,26 +142,10 @@ legend {
   margin-bottom: 10px;
 }
 
-label {
-  display: block;
-  margin: 10px 0;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.option {
-  flex: 1 0 200px;
-  margin: 10px;
-}
-
-input[type="checkbox"] {
-  margin-left: 10px;
-}
-
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
-    margin: 16px 0px 0px 0px;
+    margin: 16px 0;
     padding: 10px 15px;
   }
 
